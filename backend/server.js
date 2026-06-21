@@ -12,7 +12,7 @@ const db = new sqlite3.Database('./tarefas.db', (err) => {
     if (err) {
         console.error("Erro ao conectar ao SQLite:", err.message);
     } else {
-        console.log("Conectado ao banco de dados SQLite nativo.");
+        console.log("Conectado ao banco de dados SQLite nativo!");
     }
 });
 
