@@ -37,6 +37,22 @@ app.get('/api/tarefas', (req, res) => {
         }));
         res.json(tarefas);
     });
+
+    app.post('/api/tarefas', (req, res) => {
+    const { titulo } = req.body;
+    if (!titulo || titulo.trim() === "") {
+        return res.status(400).json({ erro: "O título é obrigatório." });
+    }
+
+    const stmt = db.prepare("INSERT INTO tarefas (titulo) VALUES (?)");
+    stmt.run(titulo, function (err) {
+        if (err) {
+            return res.status(500).json({ erro: err.message });
+        }
+        res.status(201).json({ id: this.lastID, titulo, concluida: false });
+    });
+    stmt.finalize();
+});
 });
 
 
