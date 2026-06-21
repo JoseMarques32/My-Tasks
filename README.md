@@ -32,4 +32,18 @@ My-Tasks/
 │   ├── package.json     # Dependências do Node.js
 │   └── node_modules/    # Pastas de pacotes instalados
 └── frontend/
-    └── index.html       # Interface visual e lógica de consumo da API
+    └── index.html       # Interface visual e lógica de consumo da API 
+```
+
+## Como Executar o Projeto Localmente
+
+Pré-requisitos
+
+Node.JS instalado 
+
+1- Clonar Repositório <br>
+2- Configurar e inicar Backend <br>
+2.1 - cd backend <br>
+2.2 - npm install & node server.js <br>
+3 - Abrir o arquivo index.html
+
