@@ -73,6 +73,22 @@ app.put('/api/tarefas/:id', (req, res) => {
         });
     });
 });
+
+app.delete('/api/tarefas/:id', (req, res) => {
+    const { id } = req.params;
+
+    db.run("DELETE FROM tarefas WHERE id = ?", [id], (err) => {
+        if (err) {
+            return res.status(500).json({ erro: err.message });
+        }
+        res.json({ mensagem: "Removida com sucesso!" });
+    });
+});
+
+app.listen(PORT, () => {
+    console.log(`Servidor rodando em http://localhost:${PORT}`);
+});
+
 });
 
 
