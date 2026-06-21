@@ -53,6 +53,26 @@ app.get('/api/tarefas', (req, res) => {
     });
     stmt.finalize();
 });
+
+app.put('/api/tarefas/:id', (req, res) => {
+    const { id } = req.params;
+
+    
+    db.get("SELECT concluida FROM tarefas WHERE id = ?", [id], (err, row) => {
+        if (err || !row) {
+            return res.status(404).json({ erro: "Tarefa não encontrada." });
+        }
+
+        const novoStatus = row.concluida === 1 ? 0 : 1;
+
+        db.run("UPDATE tarefas SET concluida = ? WHERE id = ?", [novoStatus, id], (err) => {
+            if (err) {
+                return res.status(500).json({ erro: err.message });
+            }
+            res.json({ id: parseInt(id), concluida: novoStatus === 1 });
+        });
+    });
+});
 });
 
 
