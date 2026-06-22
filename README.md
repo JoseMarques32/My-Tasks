@@ -35,6 +35,13 @@ My-Tasks/
     └── index.html       # Interface visual e lógica de consumo da API 
 ```
 
+### Rotas 
+  - /api/tarefas : (GET) Lista as tarefas registradas
+  - /api/tarefas : (POST) Registra uma nova tarefa
+  - /api/tarefas/ :id : (PUT) Atualiza o status de uma tarefa (Concluida)
+  - /api/tarefas/:id : (DELETE) Remove uma tarefa específica
+
+
 ## Como Executar o Projeto Localmente
 
 Pré-requisitos
