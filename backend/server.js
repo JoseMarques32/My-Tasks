@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const SECRET_KEY = 'sua_chave_secreta_aqui';
 
 app.use(cors());
@@ -17,7 +17,6 @@ const db = new sqlite3.Database('./tarefas.db', (err) => {
 
 // Inicialização da estrutura das tabelas
 db.serialize(() => {
-    db.run(`DROP TABLE IF EXISTS tarefas`);
     db.run(`
         CREATE TABLE IF NOT EXISTS usuarios (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
