@@ -1,6 +1,6 @@
 const express = require('express');
 const cors = require('cors');
-const sqlite3 = require('sqlite3').verbose();
+const Database = require('better-sqlite3');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
@@ -11,9 +11,7 @@ const SECRET_KEY = 'sua_chave_secreta_aqui';
 app.use(cors());
 app.use(express.json());
 
-const db = new sqlite3.Database('./tarefas.db', (err) => {
-    if (!err) console.log("Conectado ao banco de dados SQLite!");
-});
+const db = new Database('./database.db');
 
 // Inicialização da estrutura das tabelas
 db.serialize(() => {
