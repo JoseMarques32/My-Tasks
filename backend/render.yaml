@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: taskflow-backend
+    env: node
+    plan: free
+    buildCommand: npm rebuild && npm install
+    startCommand: node server.js
+    envVars:
+      - key: NODE_VERSION
+        value: 20.20.0
